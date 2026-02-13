@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Elegant, appetizing palette */
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
+
+  --background: 0 0% 100%;
+  --foreground: 20 10% 15%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 20 10% 15%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 10% 15%;
+
+  /* Burnt Orange Primary - appetizing and premium */
+  --primary: 24 90% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 30 20% 96%;
+  --secondary-foreground: 24 10% 20%;
+
+  --muted: 30 15% 94%;
+  --muted-foreground: 24 5% 45%;
+
+  --accent: 24 90% 96%;
+  --accent-foreground: 24 90% 40%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 30 10% 90%;
+  --input: 30 10% 90%;
+  --ring: 24 90% 55%;
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 20 10% 10%;
+  --foreground: 30 10% 96%;
+
+  --card: 20 10% 12%;
+  --card-foreground: 30 10% 96%;
+
+  --popover: 20 10% 12%;
+  --popover-foreground: 30 10% 96%;
+
+  --primary: 24 90% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 20 10% 16%;
+  --secondary-foreground: 30 10% 96%;
+
+  --muted: 20 10% 16%;
+  --muted-foreground: 24 5% 60%;
+
+  --accent: 20 10% 16%;
+  --accent-foreground: 30 10% 96%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 20 10% 20%;
+  --input: 20 10% 20%;
+  --ring: 24 90% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+}
+
+/* Custom Utilities for Premium Feel */
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl dark:bg-black/60 dark:border-white/10;
+}
+
+.animate-in-up {
+  animation: in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
