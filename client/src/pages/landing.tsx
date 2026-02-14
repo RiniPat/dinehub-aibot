@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const demoMenuItems = [
-  { id: 1, name: "Truffle Hummus", description: "Creamy chickpea hummus drizzled with truffle oil, served with warm pita.", price: "38.00", category: "Appetizer", imageUrl: "https://images.unsplash.com/photo-1637361973-e2ef1e177713?w=400&h=300&fit=crop", isBestseller: true },
-  { id: 2, name: "Grilled Halloumi Salad", description: "Crispy halloumi over mixed greens with pomegranate and za'atar.", price: "45.00", category: "Appetizer", imageUrl: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop", isChefsPick: true },
-  { id: 3, name: "Seafood Risotto", description: "Arborio rice with prawns, calamari, and saffron broth.", price: "95.00", category: "Main", imageUrl: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&h=300&fit=crop", isBestseller: true },
-  { id: 4, name: "Grilled Lamb Chops", description: "NZ lamb chops with rosemary jus and roasted vegetables.", price: "120.00", category: "Main", imageUrl: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=400&h=300&fit=crop", isChefsPick: true },
-  { id: 5, name: "Chicken Shawarma Plate", description: "Marinated chicken with garlic sauce, pickles and tabouleh.", price: "65.00", category: "Main", imageUrl: "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&h=300&fit=crop", isTodaysSpecial: true },
-  { id: 6, name: "Kunafa Cheesecake", description: "Crispy kunafa meets creamy New York cheesecake.", price: "42.00", category: "Dessert", imageUrl: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop", isBestseller: true },
-  { id: 7, name: "Fresh Mint Lemonade", description: "House-made lemonade with mint and a hint of rose water.", price: "22.00", category: "Drink", imageUrl: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=400&h=300&fit=crop" },
-  { id: 8, name: "Chocolate Lava Cake", description: "Warm chocolate fondant with vanilla ice cream.", price: "48.00", category: "Dessert", imageUrl: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop" },
+  { id: 1, name: "Truffle Hummus", description: "Creamy chickpea hummus drizzled with truffle oil, served with warm pita.", price: "38.00", category: "Appetizer", imageUrl: "https://images.unsplash.com/photo-1577906096429-f73c2c312435?w=400&h=300&fit=crop", isBestseller: true },
+  { id: 2, name: "Grilled Halloumi Salad", description: "Crispy halloumi over mixed greens with pomegranate and za'atar.", price: "45.00", category: "Appetizer", imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop", isChefsPick: true },
+  { id: 3, name: "Seafood Risotto", description: "Arborio rice with prawns, calamari, and saffron broth.", price: "95.00", category: "Main", imageUrl: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&h=300&fit=crop", isBestseller: true },
+  { id: 4, name: "Grilled Lamb Chops", description: "NZ lamb chops with rosemary jus and roasted vegetables.", price: "120.00", category: "Main", imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop", isChefsPick: true },
+  { id: 5, name: "Chicken Shawarma Plate", description: "Marinated chicken with garlic sauce, pickles and tabouleh.", price: "65.00", category: "Main", imageUrl: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop", isTodaysSpecial: true },
+  { id: 6, name: "Kunafa Cheesecake", description: "Crispy kunafa meets creamy New York cheesecake.", price: "42.00", category: "Dessert", imageUrl: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop", isBestseller: true },
+  { id: 7, name: "Fresh Mint Lemonade", description: "House-made lemonade with mint and a hint of rose water.", price: "22.00", category: "Drink", imageUrl: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=300&fit=crop" },
+  { id: 8, name: "Chocolate Lava Cake", description: "Warm chocolate fondant with vanilla ice cream.", price: "48.00", category: "Dessert", imageUrl: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" },
 ];
 
 function DemoMenuPreview() {
@@ -123,11 +123,6 @@ export default function Landing() {
                   Try Live Demo
                 </Button>
               </Link>
-              <Link href="/discover">
-                <Button size="lg" variant="ghost" className="h-14 px-8 text-lg rounded-xl text-primary hover:bg-primary/5">
-                  Discover Dubai 🇦🇪
-                </Button>
-              </Link>
             </div>
           </motion.div>
 
@@ -139,6 +134,33 @@ export default function Landing() {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-full filter blur-3xl opacity-30 transform translate-y-10" />
             <DemoMenuPreview />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Discover Dubai Banner */}
+      <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-10">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-3xl shrink-0">
+                🇦🇪
+              </div>
+              <div className="text-white">
+                <h3 className="font-display text-xl md:text-2xl font-bold">Discover Dubai's Top 10 Restaurants</h3>
+                <p className="text-gray-300 text-sm mt-1">Browse real menus from Zuma, Nobu, Pierchic, Tresind Studio & more</p>
+              </div>
+            </div>
+            <Link href="/discover">
+              <Button size="lg" className="h-12 px-8 text-base rounded-xl bg-white text-gray-900 hover:bg-gray-100 shadow-lg whitespace-nowrap">
+                Explore Menus <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
