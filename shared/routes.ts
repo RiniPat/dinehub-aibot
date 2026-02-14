@@ -79,6 +79,13 @@ export const api = {
         200: z.array(z.custom<typeof restaurants.$inferSelect>()),
       },
     },
+    discover: {
+      method: 'GET' as const,
+      path: '/api/discover' as const,
+      responses: {
+        200: z.array(z.custom<typeof restaurants.$inferSelect>()),
+      },
+    },
     get: {
       method: 'GET' as const,
       path: '/api/restaurants/:id' as const,

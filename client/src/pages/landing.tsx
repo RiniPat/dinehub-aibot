@@ -123,6 +123,11 @@ export default function Landing() {
                   Try Live Demo
                 </Button>
               </Link>
+              <Link href="/discover">
+                <Button size="lg" variant="ghost" className="h-14 px-8 text-lg rounded-xl text-primary hover:bg-primary/5">
+                  Discover Dubai 🇦🇪
+                </Button>
+              </Link>
             </div>
           </motion.div>
 

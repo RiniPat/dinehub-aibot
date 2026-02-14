@@ -7,6 +7,7 @@ import session from "express-session";
 import MemoryStore from "memorystore";
 import OpenAI from "openai";
 import Anthropic from "@anthropic-ai/sdk";
+import { dubaiRestaurants } from "./dubai-restaurants";
 import QRCode from "qrcode";
 import multer from "multer";
 import mammoth from "mammoth";
@@ -135,6 +136,12 @@ export async function registerRoutes(
   app.get(api.restaurants.list.path, isAuthenticated, async (req, res) => {
     const restaurants = await storage.getRestaurantsByUser((req.session as any).userId);
     res.json(restaurants);
+  });
+
+  // Public discover endpoint — lists all restaurants
+  app.get(api.restaurants.discover.path, async (req, res) => {
+    const allRestaurants = await storage.getAllRestaurants();
+    res.json(allRestaurants);
   });
 
   app.get(api.restaurants.get.path, async (req, res) => {
@@ -507,6 +514,47 @@ Your role:
         isChefsPick: item.isChefsPick || false,
         isTodaysSpecial: item.isTodaysSpecial || false,
       });
+    }
+  }
+
+  // Seed Top 10 Dubai Restaurants
+  for (const rest of dubaiRestaurants) {
+    const existing = await storage.getRestaurantBySlug(rest.slug);
+    if (!existing) {
+      const existingUser = await storage.getUserByUsername("admin");
+      const user = existingUser || await storage.createUser({ username: "admin", password: "password" });
+
+      const restaurant = await storage.createRestaurant({
+        userId: user.id,
+        name: rest.name,
+        slug: rest.slug,
+        address: rest.address,
+        cuisineType: rest.cuisineType,
+        description: rest.description,
+        tableCount: 20,
+        whatsappNumber: "",
+      });
+
+      const menu = await storage.createMenu({
+        restaurantId: restaurant.id,
+        name: rest.menuName,
+        description: rest.menuDescription,
+      });
+
+      for (const item of rest.items) {
+        await storage.createMenuItem({
+          menuId: menu.id,
+          name: item.name,
+          description: item.description,
+          price: item.price,
+          category: item.category,
+          isAvailable: true,
+          isBestseller: (item as any).isBestseller || false,
+          isChefsPick: (item as any).isChefsPick || false,
+          isTodaysSpecial: (item as any).isTodaysSpecial || false,
+        });
+      }
+      console.log(`Seeded: ${rest.name}`);
     }
   }
 

@@ -13,6 +13,7 @@ import DashboardMenus from "@/pages/dashboard/menus";
 import DashboardQR from "@/pages/dashboard/qr";
 import PublicMenu from "@/pages/public-menu";
 import DemoPage from "@/pages/demo";
+import DiscoverPage from "@/pages/discover";
 
 import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
@@ -65,6 +66,9 @@ function Router() {
 
       {/* Public Menu */}
       <Route path="/menu/:slug" component={PublicMenu} />
+
+      {/* Discover Dubai */}
+      <Route path="/discover" component={DiscoverPage} />
 
       {/* Interactive Demo */}
       <Route path="/demo" component={DemoPage} />
